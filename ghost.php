@@ -1,3 +1,24 @@
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors',1);
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: access");
+    header("Access-Control-Allow-Methods: POST");
+    header("Access-Control-Allow-Credentials: true");
+    if(isset($_FILES['ghost_file'])){
+        $team = $_POST['team'];
+        $name = $_POST['ghost'];
+        $file_info = pathinfo($_FILES['ghost_file']['name']);
+        $file_name = time().'_'.uniqid().'.cpp';
+        $file_path = '/home/nienthao96/pamacup/UploadFile/'.$file_name;
+        if (move_uploaded_file($_FILES['ghost_file']['tmp_name'], $file_path)) {
+            $cmd = 'bash /home/nienthao96/Service/Game/ai_ghost.sh "'.$team.'" "'.$name.'" '.$file_path;
+            $output = shell_exec($cmd);
+        } else {
+            echo "Error!";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,27 +92,27 @@
                         <div class="col-9">
                             <select name="team" id="team" class="form-control" required>
                                 <option disabled selected value> -- Chọn team -- </option>
-                                <option value="1">Team1</option>
-                                <option value="2">Team2</option>
-                                <option value="3">Team3</option>
-                                <option value="4">Team4</option>
-                                <option value="5">Team5</option>
-                                <option value="6">Team6</option>
-                                <option value="7">Team7</option>
-                                <option value="8">Team8</option>
+                                <option value="Team 1">Team1</option>
+                                <option value="Team 2">Team2</option>
+                                <option value="Team 3">Team3</option>
+                                <option value="Team 4">Team4</option>
+                                <option value="Team 5">Team5</option>
+                                <option value="Team 6">Team6</option>
+                                <option value="Team 7">Team7</option>
+                                <option value="Team 8">Team8</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="pacman" class="col-3 col-form-label">Tên Ghost</label>
+                        <label for="ghost" class="col-3 col-form-label">Tên Ghost</label>
                         <div class="col-9">
-                            <input id="pacman" name="pacman" class="form-control" type="text" required>
+                            <input id="ghost" name="ghost" class="form-control" type="text" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="pacman_file" class="col-3 col-form-label">File cpp</label>
+                        <label for="ghost_file" class="col-3 col-form-label">File cpp</label>
                         <div class="col-9">
-                            <input id="pacman_file" name="pacman_file" class="form-control" type="file" required>
+                            <input id="ghost_file" name="ghost_file" class="form-control" type="file" required>
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">
