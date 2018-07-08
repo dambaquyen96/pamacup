@@ -1,3 +1,29 @@
+<?php
+    include "config.php";
+    $result = mysqli_query($con,"SELECT * FROM game ORDER BY id DESC");
+    $arr = array();
+    while($rows = mysqli_fetch_array($result)){
+        if($rows['status'] == -1){
+            $rows['color1'] = 'danger';
+            $rows['color2'] = 'danger';
+        } elseif ($rows['status'] == 100) {
+            if($rows['score1'] == $rows['score2']){
+                $rows['color1'] = 'info';
+                $rows['color2'] = 'info';
+            } elseif ($rows['score1'] > $rows['score2']) {
+                $rows['color1'] = 'success';
+                $rows['color2'] = 'danger';
+            } elseif ($rows['score1'] < $rows['score2']) {
+                $rows['color1'] = 'danger';
+                $rows['color2'] = 'success';
+            }
+        } else {
+            $rows['color1'] = 'secondary';
+            $rows['color2'] = 'secondary';
+        }
+        $arr[] = $rows;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,99 +90,40 @@
             <div class="row justify-content-md-center">
                 <h1>Kết quả trận đấu</h1>
             </div>
-            <div class="row justify-content-md-center" style="margin-bottom: 20px">
-                <div class="form-group col-4" style="margin-bottom: 0">
-                    <input type="text" name="username" placeholder="Player name" class="form-control">
-                </div>
-                <div>                   
-                    <button class="btn btn-black btn-icon btn-round" type="button" style="margin: 0">
-                        <i class="now-ui-icons ui-1_zoom-bold"></i>
-                    </button>
-                </div>
-            </div>
             <div class="row justify-content-md-center">
                 <div class="col-xl-8 col-md-10">
-                    <div class="card">
-                        <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
-                            <div class="card-body" style="min-height: 0; padding: 0;">
-                                <div class="row">
-                                    <div class="bg-success" style="width: 50px;">
-                                        
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-success">+23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="col-1 text-center  my-auto">
-                                        <strong>VS</strong>
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-danger">-23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="bg-danger" style="width: 50px;">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
-                            <div class="card-body" style="min-height: 0; padding: 0;">
-                                <div class="row">
-                                    <div class="bg-info" style="width: 50px;">
-                                        
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-info">0</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="col-1 text-center  my-auto">
-                                        <strong>VS</strong>
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-info">0</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="bg-info" style="width: 50px;">
-                                        
+                    <?php foreach($arr as $row){ ?>
+                        <div class="card">
+                            <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
+                                <div class="card-body" style="min-height: 0; padding: 0;">
+                                    <div class="row">
+                                        <div class="<?php echo "bg-".$row['color1']?>" style="width: 50px;">
+                                        </div>
+                                        <div class="col match-card">
+                                            <div class="user-card"><?php echo $row['team1']?></div>
+                                            <div class="elo-card">Pacman: <?php echo $row['name1'] ?></div>
+                                            <div class="rank-card">Điểm: <span class="<?php echo "text-".$row['color1']?>"><?php echo $row['score1']?></span></div>
+                                        </div>
+                                        <div class="col-2 text-center  my-auto">
+                                            <?php
+                                                if($row['status'] == 0) echo 'Pending';
+                                                elseif($row['status'] == 1) echo 'Đang đấu';
+                                                else echo $row['time'];
+                                            ?>
+                                        </div>
+                                        <div class="col match-card">
+                                            <div class="user-card"><?php echo $row['team2']?></div>
+                                            <div class="elo-card">Ghost: <?php echo $row['name2'] ?></div>
+                                            <div class="rank-card">Điểm: <span class="<?php echo "text-".$row['color2']?>"><?php echo $row['score2']?></span></div>
+                                        </div>
+                                        <div class="<?php echo "bg-".$row['color2']?>" style="width: 50px;">
+                                            
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
-                            <div class="card-body" style="min-height: 0; padding: 0;">
-                                <div class="row">
-                                    <div class="bg-success" style="width: 50px;">
-                                        
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-success">+23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="col-1 text-center  my-auto">
-                                        <strong>VS</strong>
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-danger">-23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="bg-danger" style="width: 50px;">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

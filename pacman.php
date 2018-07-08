@@ -14,9 +14,10 @@
 		if (move_uploaded_file($_FILES['pacman_file']['tmp_name'], $file_path)) {
 			$cmd = 'bash /home/nienthao96/Service/Game/pacman_ai.sh "'.$team.'" "'.$name.'" '.$file_path;
 			$output = shell_exec($cmd);
+			header('Location: result.php');
 		} else {
 			echo "Error!";
-		}	
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -92,14 +93,14 @@
                         <div class="col-9">
                             <select name="team" id="team" class="form-control" required>
                                 <option disabled selected value> -- Chọn team -- </option>
-                                <option value="Team 1">Team1</option>
-                                <option value="Team 2">Team2</option>
-                                <option value="Team 3">Team3</option>
-                                <option value="Team 4">Team4</option>
-                                <option value="Team 5">Team5</option>
-                                <option value="Team 6">Team6</option>
-                                <option value="Team 7">Team7</option>
-                                <option value="Team 8">Team8</option>
+                                <option value="Team 1">Team 1</option>
+                                <option value="Team 2">Team 2</option>
+                                <option value="Team 3">Team 3</option>
+                                <option value="Team 4">Team 4</option>
+                                <option value="Team 5">Team 5</option>
+                                <option value="Team 6">Team 6</option>
+                                <option value="Team 7">Team 7</option>
+                                <option value="Team 8">Team 8</option>
                             </select>
                         </div>
                     </div>
