@@ -1,6 +1,22 @@
 <?php
-	if(isset($POST)){
-		echo "POST";
+	error_reporting(E_ALL);
+	ini_set('display_errors',1);
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: access");
+	header("Access-Control-Allow-Methods: POST");
+	header("Access-Control-Allow-Credentials: true");
+	if(isset($_FILES['pacman_file'])){
+		$team = $_POST['team'];
+		$name = $_POST['pacman'];
+		$file_info = pathinfo($_FILES['pacman_file']['name']);
+		$file_name = time().'_'.uniqid().'.cpp';
+		$file_path = '/home/nienthao96/pamacup/UploadFile/'.$file_name;
+		if (move_uploaded_file($_FILES['pacman_file']['tmp_name'], $file_path)) {
+			$cmd = 'bash /home/nienthao96/Service/Game/pacman_ai.sh "'.$team.'" "'.$name.'" '.$file_path;
+			$output = shell_exec($cmd);
+		} else {
+			echo "Error!";
+		}	
 	}
 ?>
 <!DOCTYPE html>
@@ -76,14 +92,14 @@
                         <div class="col-9">
                             <select name="team" id="team" class="form-control" required>
                                 <option disabled selected value> -- Chọn team -- </option>
-                                <option value="1">Team1</option>
-                                <option value="2">Team2</option>
-                                <option value="3">Team3</option>
-                                <option value="4">Team4</option>
-                                <option value="5">Team5</option>
-                                <option value="6">Team6</option>
-                                <option value="7">Team7</option>
-                                <option value="8">Team8</option>
+                                <option value="Team 1">Team1</option>
+                                <option value="Team 2">Team2</option>
+                                <option value="Team 3">Team3</option>
+                                <option value="Team 4">Team4</option>
+                                <option value="Team 5">Team5</option>
+                                <option value="Team 6">Team6</option>
+                                <option value="Team 7">Team7</option>
+                                <option value="Team 8">Team8</option>
                             </select>
                         </div>
                     </div>
