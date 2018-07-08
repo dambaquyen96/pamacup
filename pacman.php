@@ -70,7 +70,7 @@
                 <h1>Sân luyện Pacman</h1>
             </div>
             <div class="row justify-content-center" style="margin-bottom: 20px">
-                <form action="" class="col-6">
+                <form action="" method="POST" enctype="multipart/form-data" class="col-6">
                     <div class="form-group row">
                         <label for="team" class="col-3 col-form-label">Team</label>
                         <div class="col-9">
