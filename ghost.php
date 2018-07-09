@@ -101,6 +101,7 @@
                                 <option value="Team 6">Team 6</option>
                                 <option value="Team 7">Team 7</option>
                                 <option value="Team 8">Team 8</option>
+								<option value="Anonymous">Anonymous</option>
                             </select>
                         </div>
                     </div>
