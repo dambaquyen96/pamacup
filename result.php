@@ -87,7 +87,7 @@
     <!-- End Navbar -->
     <div class="wrapper" style="margin-top: 100px">
         <div class="container">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <h1>Kết quả trận đấu</h1>
             </div>
             <div class="row justify-content-md-center">

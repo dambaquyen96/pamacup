@@ -87,7 +87,7 @@
                 <h1>Sân luyện Ghost</h1>
             </div>
             <div class="row justify-content-center" style="margin-bottom: 20px">
-                <form action="" method="POST" enctype="multipart/form-data" class="col-6">
+                <form action="" method="POST" enctype="multipart/form-data" class="col-lg-6 col-md-8 col-xs-10">
                     <div class="form-group row">
                         <label for="team" class="col-3 col-form-label">Team</label>
                         <div class="col-9">
@@ -117,9 +117,9 @@
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">
-                        <input type="submit" value="Chiến" class="btn btn-black btn-round col-2">
+                        <input type="submit" value="Chiến" class="btn btn-black btn-round col-3">
                         <div class="col-1"></div>
-                        <input type="reset" value="Thôi" class="btn btn-black btn-round col-2">
+                        <input type="reset" value="Thôi" class="btn btn-black btn-round col-3">
                     </div>
                 </form>
             </div>
