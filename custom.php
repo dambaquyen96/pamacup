@@ -17,7 +17,7 @@
 		$ghost_file_path = '/home/nienthao96/pamacup/UploadFile/'.$ghost_file_name;
         if (move_uploaded_file($_FILES['pacman_file']['tmp_name'], $pacman_file_path)
             && move_uploaded_file($_FILES['ghost_file']['tmp_name'], $ghost_file_path) ) {
-			$cmd = 'bash /home/nienthao96/Service/Game/ai_ai.sh "'.$team.'" "'.$pacman_name.'" '.$pacman_file_paths.' "'.$team.'" "'.$ghost_name.'" '.$ghost_file_path;
+			$cmd = 'bash /home/nienthao96/Service/Game/ai_ai.sh "'.$team.'" "'.$pacman_name.'" '.$pacman_file_path.' "'.$team.'" "'.$ghost_name.'" '.$ghost_file_path;
 			$output = shell_exec($cmd);
 			header('Location: result.php');
 		} else {
