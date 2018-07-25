@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>League of Snake</title>
+    <title>Pama Cup</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -70,6 +70,9 @@
                 </a>
                 <a href="ghost.php" class="form-control btn btn-black btn-round col-6">
                     Sân luyện Ghost
+                </a>
+                <a disabled class="form-control btn btn-black btn-round col-6">
+                    Pacman vs Ghost
                 </a>
                 <a href="result.php" class="form-control btn btn-black btn-round col-6">
                     Kết quả trận đấu

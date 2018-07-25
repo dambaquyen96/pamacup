@@ -1,24 +1,29 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors',1);
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: access");
-    header("Access-Control-Allow-Methods: POST");
-    header("Access-Control-Allow-Credentials: true");
-    if(isset($_FILES['ghost_file'])){
-        $team = $_POST['team'];
-        $name = $_POST['ghost'];
-        $file_info = pathinfo($_FILES['ghost_file']['name']);
-        $file_name = time().'_'.uniqid().'.cpp';
-        $file_path = '/home/nienthao96/pamacup/UploadFile/'.$file_name;
-        if (move_uploaded_file($_FILES['ghost_file']['tmp_name'], $file_path)) {
-            $cmd = 'bash /home/nienthao96/Service/Game/ai_ghost.sh "'.$team.'" "'.$name.'" '.$file_path;
-            $output = shell_exec($cmd);
+	error_reporting(E_ALL);
+	ini_set('display_errors',1);
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: access");
+	header("Access-Control-Allow-Methods: POST");
+	header("Access-Control-Allow-Credentials: true");
+	if(isset($_FILES['pacman_file'])){
+		$team = $_POST['team'];
+        $pacman_name = $_POST['pacman'];
+        $ghost_name = $_POST['ghost'];
+        $pacman_file_info = pathinfo($_FILES['pacman_file']['name']);
+        $ghost_file_info = pathinfo($_FILES['ghost_file']['name']);
+		$pacman_file_name = time().'_'.uniqid().'.cpp';
+		$ghost_file_name = time().'_'.uniqid().'.cpp';
+		$pacman_file_path = '/home/nienthao96/pamacup/UploadFile/'.$pacman_file_name;
+		$ghost_file_path = '/home/nienthao96/pamacup/UploadFile/'.$ghost_file_name;
+        if (move_uploaded_file($_FILES['pacman_file']['tmp_name'], $pacman_file_path)
+            && move_uploaded_file($_FILES['ghost_file']['tmp_name'], $ghost_file_path) ) {
+			$cmd = 'bash /home/nienthao96/Service/Game/ai_ai.sh "'.$team.'" "'.$pacman_name.'" '.$pacman_file_paths.' "'.$team.'" "'.$ghost_name.'" '.$ghost_file_path;
+			$output = shell_exec($cmd);
 			header('Location: result.php');
-        } else {
-            echo "Error!";
-        }
-    }
+		} else {
+			echo "Error!";
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +71,7 @@
                             <p>Pacman</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="ghost.php">
                             <p>Ghost</p>
                         </a>
@@ -84,7 +89,7 @@
     <div class="wrapper" style="margin-top: 100px;">
         <div class="container">
             <div class="row justify-content-center">
-                <h1>Sân luyện Ghost</h1>
+                <h1>Pacman vs Ghost</h1>
             </div>
             <div class="row justify-content-center" style="margin-bottom: 20px">
                 <form action="" method="POST" enctype="multipart/form-data" class="col-lg-6 col-md-8 col-xs-10">
@@ -106,13 +111,25 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="pacman" class="col-3 col-form-label">Tên Pacman</label>
+                        <div class="col-9">
+                            <input id="pacman" name="pacman" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="pacman_file" class="col-3 col-form-label">File Pacman</label>
+                        <div class="col-9">
+                            <input id="pacman_file" name="pacman_file" class="form-control" type="file" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="ghost" class="col-3 col-form-label">Tên Ghost</label>
                         <div class="col-9">
                             <input id="ghost" name="ghost" class="form-control" type="text" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="ghost_file" class="col-3 col-form-label">File cpp</label>
+                        <label for="ghost_file" class="col-3 col-form-label">File Ghost</label>
                         <div class="col-9">
                             <input id="ghost_file" name="ghost_file" class="form-control" type="file" required>
                         </div>

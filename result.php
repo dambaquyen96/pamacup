@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set("Asia/Ho_Chi_Minh");
     include "config.php";
     $result = mysqli_query($con,"SELECT * FROM game ORDER BY id DESC");
     $arr = array();
@@ -28,11 +29,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" http-equiv="refresh" content="60"/>
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>League of Snake</title>
+    <title>Pama Cup</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -87,14 +88,14 @@
     <!-- End Navbar -->
     <div class="wrapper" style="margin-top: 100px">
         <div class="container">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
                 <h1>Kết quả trận đấu</h1>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-xl-8 col-md-10">
                     <?php foreach($arr as $row){ ?>
                         <div class="card">
-                            <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
+                            <a href="<?php echo isset($row['path'])?'game/'.$row['path'].'.pama':'#' ?>" class="temp" style="color: #2c2c2c; text-decoration: none;">
                                 <div class="card-body" style="min-height: 0; padding: 0;">
                                     <div class="row">
                                         <div class="<?php echo "bg-".$row['color1']?>" style="width: 50px;">
@@ -124,87 +125,6 @@
                             </a>
                         </div>
                     <?php } ?>
-                    <div class="card">
-                        <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
-                            <div class="card-body" style="min-height: 0; padding: 0;">
-                                <div class="row">
-                                    <div class="bg-success" style="width: 50px;">
-                                        
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-success">+23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="col-1 text-center  my-auto">
-                                        <strong>VS</strong>
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-danger">-23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="bg-danger" style="width: 50px;">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
-                            <div class="card-body" style="min-height: 0; padding: 0;">
-                                <div class="row">
-                                    <div class="bg-info" style="width: 50px;">
-                                        
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-info">0</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="col-1 text-center my-auto">
-                                        <strong>VS</strong>
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-info">0</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="bg-info" style="width: 50px;">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card">
-                        <a href="" class="temp" style="color: #2c2c2c; text-decoration: none;">
-                            <div class="card-body" style="min-height: 0; padding: 0;">
-                                <div class="row">
-                                    <div class="bg-success" style="width: 50px;">
-                                        
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-success">+23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="col-1 text-center  my-auto">
-                                        <strong>VS</strong>
-                                    </div>
-                                    <div class="col match-card">
-                                        <div class="user-card">Nguyen Van A</div>
-                                        <div class="elo-card">Elo: 1231(<span class="text-danger">-23</span>)</div>
-                                        <div class="rank-card">Rank: 1</div>
-                                    </div>
-                                    <div class="bg-danger" style="width: 50px;">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>

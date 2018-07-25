@@ -14,9 +14,10 @@
 		if (move_uploaded_file($_FILES['pacman_file']['tmp_name'], $file_path)) {
 			$cmd = 'bash /home/nienthao96/Service/Game/pacman_ai.sh "'.$team.'" "'.$name.'" '.$file_path;
 			$output = shell_exec($cmd);
+			header('Location: result.php');
 		} else {
 			echo "Error!";
-		}	
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -27,7 +28,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>League of Snake</title>
+    <title>Pama Cup</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -86,20 +87,21 @@
                 <h1>Sân luyện Pacman</h1>
             </div>
             <div class="row justify-content-center" style="margin-bottom: 20px">
-                <form action="" method="POST" enctype="multipart/form-data" class="col-6">
+                <form action="" method="POST" enctype="multipart/form-data" class="col-lg-6 col-md-8 col-xs-10">
                     <div class="form-group row">
                         <label for="team" class="col-3 col-form-label">Team</label>
                         <div class="col-9">
                             <select name="team" id="team" class="form-control" required>
                                 <option disabled selected value> -- Chọn team -- </option>
-                                <option value="Team 1">Team1</option>
-                                <option value="Team 2">Team2</option>
-                                <option value="Team 3">Team3</option>
-                                <option value="Team 4">Team4</option>
-                                <option value="Team 5">Team5</option>
-                                <option value="Team 6">Team6</option>
-                                <option value="Team 7">Team7</option>
-                                <option value="Team 8">Team8</option>
+                                <option value="SI Crystal">SI Crystal</option>
+                                <option value="PacmanDBC">PacmanDBC</option>
+                                <option value="KhaLaChacKeo">KhaLaChacKeo</option>
+                                <option value="502">502</option>
+                                <option value="Pikachuu">Pikachuu</option>
+                                <option value="Pakkuman">Pakkuman</option>
+                                <option value="Walnuts">Walnuts</option>
+                                <option value="Random">Random</option>
+								<option value="Anonymous">Anonymous</option>
                             </select>
                         </div>
                     </div>
@@ -116,9 +118,9 @@
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">
-                        <input type="submit" value="Chiến" class="btn btn-black btn-round col-2">
+                        <input type="submit" value="Chiến" class="btn btn-black btn-round col-3">
                         <div class="col-1"></div>
-                        <input type="reset" value="Thôi" class="btn btn-black btn-round col-2">
+                        <input type="reset" value="Thôi" class="btn btn-black btn-round col-3">
                     </div>
                 </form>
             </div>
