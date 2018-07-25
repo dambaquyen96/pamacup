@@ -93,14 +93,14 @@
                         <div class="col-9">
                             <select name="team" id="team" class="form-control" required>
                                 <option disabled selected value> -- Chọn team -- </option>
-                                <option value="Team 1">Team 1</option>
-                                <option value="Team 2">Team 2</option>
-                                <option value="Team 3">Team 3</option>
-                                <option value="Team 4">Team 4</option>
-                                <option value="Team 5">Team 5</option>
-                                <option value="Team 6">Team 6</option>
-                                <option value="Team 7">Team 7</option>
-                                <option value="Team 8">Team 8</option>
+                                <option value="SI Crystal">SI Crystal</option>
+                                <option value="PacmanDBC">PacmanDBC</option>
+                                <option value="KhaLaChacKeo">KhaLaChacKeo</option>
+                                <option value="502">502</option>
+                                <option value="Pikachuu">Pikachuu</option>
+                                <option value="Pakkuman">Pakkuman</option>
+                                <option value="Walnuts">Walnuts</option>
+                                <option value="Random">Random</option>
 								<option value="Anonymous">Anonymous</option>
                             </select>
                         </div>

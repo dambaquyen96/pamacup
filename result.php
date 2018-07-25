@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set("Asia/Ho_Chi_Minh");
     include "config.php";
     $result = mysqli_query($con,"SELECT * FROM game ORDER BY id DESC");
     $arr = array();
