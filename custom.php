@@ -76,6 +76,11 @@
                             <p>Ghost</p>
                         </a>
                     </li>
+					<li class="nav-item active">
+                        <a class="nav-link" href="custom.php">
+                            <p>Custom</p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="result.php">
                             <p>Result</p>

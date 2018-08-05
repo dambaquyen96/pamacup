@@ -49,6 +49,11 @@
                             <p>Ghost</p>
                         </a>
                     </li>
+					<li class="nav-item">
+                        <a class="nav-link" href="custom.php">
+                            <p>Custom</p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="result.php">
                             <p>Result</p>
@@ -71,7 +76,7 @@
                 <a href="ghost.php" class="form-control btn btn-black btn-round col-6">
                     Sân luyện Ghost
                 </a>
-                <a disabled class="form-control btn btn-black btn-round col-6">
+                <a href="custom.php" class="form-control btn btn-black btn-round col-6">
                     Pacman vs Ghost
                 </a>
                 <a href="result.php" class="form-control btn btn-black btn-round col-6">
