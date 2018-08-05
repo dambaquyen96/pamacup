@@ -7,6 +7,7 @@
 	header("Access-Control-Allow-Credentials: true");
 	if(isset($_FILES['pacman_file'])){
 		$team = $_POST['team'];
+        $map = $_POST['map'];
         $pacman_name = $_POST['pacman'];
         $ghost_name = $_POST['ghost'];
         $pacman_file_info = pathinfo($_FILES['pacman_file']['name']);
@@ -17,7 +18,7 @@
 		$ghost_file_path = '/home/nienthao96/pamacup/UploadFile/'.$ghost_file_name;
         if (move_uploaded_file($_FILES['pacman_file']['tmp_name'], $pacman_file_path)
             && move_uploaded_file($_FILES['ghost_file']['tmp_name'], $ghost_file_path) ) {
-			$cmd = 'bash /home/nienthao96/Service/Game/ai_ai.sh "'.$team.'" "'.$pacman_name.'" '.$pacman_file_path.' "'.$team.'" "'.$ghost_name.'" '.$ghost_file_path;
+			$cmd = 'bash /home/nienthao96/Service/Game/ai_ai.sh "'.$team.'" "'.$pacman_name.'" '.$pacman_file_path.' "'.$team.'" "'.$ghost_name.'" '.$ghost_file_path.' '.$map;
 			$output = shell_exec($cmd);
 			header('Location: result.php');
 		} else {
@@ -112,6 +113,17 @@
                                 <option value="Walnuts">Walnuts</option>
                                 <option value="Random">Random</option>
 								<option value="Anonymous">Anonymous</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="map" class="col-3 col-form-label">Map</label>
+                        <div class="col-9">
+                            <select name="map" id="map" class="form-control" required>
+                                <option disabled selected value> -- Chọn map -- </option>
+                                <option value="1">Erangel</option>
+                                <option value="2">Miramar</option>
+                                <option value="3">Sanhok</option>
                             </select>
                         </div>
                     </div>
