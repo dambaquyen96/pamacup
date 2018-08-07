@@ -1,25 +1,25 @@
 <?php
-	error_reporting(E_ALL);
-	ini_set('display_errors',1);
-	header("Access-Control-Allow-Origin: *");
-	header("Access-Control-Allow-Headers: access");
-	header("Access-Control-Allow-Methods: POST");
-	header("Access-Control-Allow-Credentials: true");
-	if(isset($_FILES['pacman_file'])){
-		$team = $_POST['team'];
-		$name = $_POST['pacman'];
+    error_reporting(E_ALL);
+    ini_set('display_errors',1);
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: access");
+    header("Access-Control-Allow-Methods: POST");
+    header("Access-Control-Allow-Credentials: true");
+    if(isset($_FILES['ghost_file'])){
+        $team = $_POST['team'];
+        $name = $_POST['ghost'];
         $map = $_POST['map'];
-		$file_info = pathinfo($_FILES['pacman_file']['name']);
-		$file_name = time().'_'.uniqid().'.cpp';
-		$file_path = '/home/nienthao96/pamacup/UploadFile/'.$file_name;
-		if (move_uploaded_file($_FILES['pacman_file']['tmp_name'], $file_path)) {
-			$cmd = 'bash /home/nienthao96/Service/Game/pacman_ai.sh "'.$team.'" "'.$name.'" '.$file_path.' '.$map;
-			$output = shell_exec($cmd);
+        $file_info = pathinfo($_FILES['ghost_file']['name']);
+        $file_name = time().'_'.uniqid().'.cpp';
+        $file_path = '/home/nienthao96/pamacup/UploadFile/'.$file_name;
+        if (move_uploaded_file($_FILES['ghost_file']['tmp_name'], $file_path)) {
+            $cmd = 'bash /home/nienthao96/Service/Game/ai_ghost.sh "'.$team.'" "'.$name.'" '.$file_path.' '.$map;
+            $output = shell_exec($cmd);
 			header('Location: result.php');
-		} else {
-			echo "Error!";
-		}
-	}
+        } else {
+            echo "Error!";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +62,7 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="pacman.php">
                             <p>Pacman</p>
                         </a>
@@ -77,7 +77,7 @@
                             <p>Custom</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="thanos.php">
                             <p>Thanos</p>
                         </a>
@@ -95,10 +95,18 @@
     <div class="wrapper" style="margin-top: 100px;">
         <div class="container">
             <div class="row justify-content-center">
-                <h1>Sân luyện Pacman</h1>
+                <h1>Đại chiến với Thanos</h1>
             </div>
             <div class="row justify-content-center" style="margin-bottom: 20px">
                 <form action="" method="POST" enctype="multipart/form-data" class="col-lg-6 col-md-8 col-xs-10">
+                    <div class="form-group row">
+                        <label for="ghost" class="col-3 col-form-label">Pacman</label>
+                        <div class="col-9">
+                            <div class="form-control">
+                                <strong>Thanos</strong>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="team" class="col-3 col-form-label">Team</label>
                         <div class="col-9">
@@ -128,15 +136,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="pacman" class="col-3 col-form-label">Tên Pacman</label>
+                        <label for="ghost" class="col-3 col-form-label">Tên Ghost</label>
                         <div class="col-9">
-                            <input id="pacman" name="pacman" class="form-control" type="text" required>
+                            <input id="ghost" name="ghost" class="form-control" type="text" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="pacman_file" class="col-3 col-form-label">File cpp</label>
+                        <label for="ghost_file" class="col-3 col-form-label">File cpp</label>
                         <div class="col-9">
-                            <input id="pacman_file" name="pacman_file" class="form-control" type="file" required>
+                            <input id="ghost_file" name="ghost_file" class="form-control" type="file" required>
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">

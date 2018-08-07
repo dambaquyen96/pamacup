@@ -81,6 +81,11 @@
                             <p>Custom</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="thanos.php">
+                            <p>Thanos</p>
+                        </a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="result.php">
                             <p>Result</p>

@@ -55,6 +55,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="thanos.php">
+                            <p>Thanos</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="result.php">
                             <p>Result</p>
                         </a>
@@ -79,11 +84,11 @@
                 <a href="custom.php" class="form-control btn btn-black btn-round col-6">
                     Pacman vs Ghost
                 </a>
+                <a href="thanos.php" class="form-control btn btn-black btn-round col-6">
+                    Thanos vs Ghost
+                </a>
                 <a href="result.php" class="form-control btn btn-black btn-round col-6">
                     Kết quả trận đấu
-                </a>
-                <a disabled class="form-control btn btn-black btn-round col-6">
-                    Comming soon
                 </a>
             </div>
         </div>
