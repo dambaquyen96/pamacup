@@ -13,7 +13,7 @@
         $file_name = time().'_'.uniqid().'.cpp';
         $file_path = '/home/nienthao96/pamacup/UploadFile/'.$file_name;
         if (move_uploaded_file($_FILES['ghost_file']['tmp_name'], $file_path)) {
-            $cmd = 'bash /home/nienthao96/Service/Game/ai_ghost.sh "'.$team.'" "'.$name.'" '.$file_path.' '.$map;
+            $cmd = 'bash /home/nienthao96/Service/Game/rl_ghost.sh "'.$team.'" "'.$name.'" '.$file_path.' '.$map;
             $output = shell_exec($cmd);
 			header('Location: result.php');
         } else {
